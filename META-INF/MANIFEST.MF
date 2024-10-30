@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Name: org.jpl7
+Implementation-Title: JPL
+Implementation-Version: 7.6.1
+Implementation-Vendor: SWI-Prolog
+Created-By: 11.0.23 (Red Hat, Inc.)
+
