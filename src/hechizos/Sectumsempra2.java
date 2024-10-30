@@ -28,13 +28,15 @@ public class Sectumsempra2 implements Hechizo {
     	lanzador.disminuirNivelMagia(COSTO);
     	objetivo.recibirDaño(50);// Aplica un daño oscuro y crítico
     	
-    	// return true; --> lo comento para que no tire error el eclipse, pero deberia quedar descomentado
+    	 return true; 
     	
-		if (lanzador.getNivelMagia() < COSTO)
+		/*
+    	if (lanzador.getNivelMagia() < COSTO)
 			return false;
 		lanzador.disminuirNivelMagia(COSTO);
 		objetivo.recibirDaño(50);// Aplica un daño oscuro y crítico
 		return true;
+		*/
 	}
 	/*
 	 * Ideas de prolog para reemplazar logica de verifiacion de lanzamiento de hechizos
