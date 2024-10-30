@@ -8,7 +8,7 @@ import org.jpl7.Term;
 import personajes.Personaje;
 
 public class AvadaKedavra implements Hechizo {
-	private static final int COSTO = 200;
+	private static final int COSTO = 100;
 
 	@Override
 	public boolean ejecutar(Personaje lanzador, Personaje objetivo) {
