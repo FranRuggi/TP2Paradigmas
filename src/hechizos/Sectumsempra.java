@@ -26,7 +26,7 @@ public class Sectumsempra implements Hechizo {
     		return false;
 		lanzador.disminuirNivelMagia(COSTO);
 		objetivo.recibirDaño(50); // Aplica un daño oscuro y crítico
-		System.out.println(lanzador.getNombre() + "Aplica un daño oscuro y critico a " + objetivo.getNombre());
+		System.out.println(lanzador.getNombre() + " aplica un daño oscuro y critico a " + objetivo.getNombre() + " debido a Sectumsempra");
 		return true;
 	}
 	/*
