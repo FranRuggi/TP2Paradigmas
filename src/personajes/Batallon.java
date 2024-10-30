@@ -12,15 +12,15 @@ public class Batallon {
 	private Random rand = new Random();
 
 	public void agregarPersonaje(Personaje personaje) {
-		personajes.add(personaje);
+		this.personajes.add(personaje);
 	}
 
 	public boolean tienePersonajesSaludables() {
-		return personajes.stream().anyMatch(Personaje::estaSaludable);
+		return this.personajes.stream().anyMatch(Personaje::estaSaludable);
 	}
 
 	public void atacar(Batallon otroBatallon) {
-		for (Personaje atacante : personajes) {
+		for (Personaje atacante : this.personajes) {
 			if (!atacante.estaSaludable() || !atacante.puedeActuar())
 				continue; //Salta al siguiente personaje, el actual esta inhabilitado;
 

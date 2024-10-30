@@ -19,7 +19,7 @@ public class ExpectoPatronum implements Hechizo {
     	if(!queryHechizo.hasSolution())
     		return false;
 		lanzador.disminuirNivelMagia(COSTO);
-		lanzador.recibirDaño(-10); 
+		lanzador.recibirDaño(-20); 
 		System.out.println(lanzador.getNombre() + " se cura debido a ExpectoPatronum");
 		return true;
 	}
