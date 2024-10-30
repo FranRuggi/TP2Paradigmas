@@ -23,6 +23,8 @@ public abstract class Personaje {
 
 	public abstract TipoPersonaje getTipo();
 
+	//Al elegir hacer la logica de los hechizos con prolog, no se nos esta ocurriendo una manera de llevar esto a cabo
+	//Estaria bueno re-verlo por el tiempo que tenemos.
 	public void desarmar() {
 		turnoPerdido = true;
 	}

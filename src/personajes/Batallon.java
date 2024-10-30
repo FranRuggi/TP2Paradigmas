@@ -22,7 +22,7 @@ public class Batallon {
 	public void atacar(Batallon otroBatallon) {
 		for (Personaje atacante : personajes) {
 			if (!atacante.estaSaludable() || !atacante.puedeActuar())
-				continue;
+				continue; //Salta al siguiente personaje, el actual esta inhabilitado;
 
 			// Seleccionar un personaje enemigo aleatorio
 			Personaje objetivo = otroBatallon.obtenerPersonajeSaludable();

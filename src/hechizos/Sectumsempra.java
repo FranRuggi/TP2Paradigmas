@@ -13,6 +13,14 @@ public class Sectumsempra implements Hechizo {
 		objetivo.recibirDaño(50); // Aplica un daño oscuro y crítico
 		return true;
 	}
+	/*
+	 * Ideas de prolog para reemplazar logica de verifiacion de lanzamiento de hechizos
+	 * ejecutar(COSTOHECHIZO,MAGIALANZADOR) : -
+	 * 			MAGIALANZADOR >= COSTOHECHIZO.
+	 * hechizo(SECTUMSEMPRA) :-
+	 * 		   			
+	 */
+	
 
 	@Override
 	public String obtenerNombre() {
