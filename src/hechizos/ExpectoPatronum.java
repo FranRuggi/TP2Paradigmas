@@ -18,7 +18,7 @@ public class ExpectoPatronum implements Hechizo {
     	Query queryHechizo = new Query("ejecutarHechizo", new Term[] {new Integer(COSTO), new Integer(lanzador.getNivelMagia())});
     	if(!queryHechizo.hasSolution())
     		return false;
-		lanzador.disminuirNivelMagia(COSTO);
+    	lanzador.disminuirNivelMagia(COSTO);
 		lanzador.recibirDaño(-20); 
 		System.out.println(lanzador.getNombre() + " se cura debido a ExpectoPatronum");
 		return true;
