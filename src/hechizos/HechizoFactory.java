@@ -23,7 +23,7 @@ public class HechizoFactory {
 	    		new Imperius(),
 	    		new Crucio(),
 	    		new AvadaKedavra(),
-	    		new Sectumsempra()
+	    		new Sectumsempra2()
             };
             return hechizosMortifagos[rand.nextInt(hechizosMortifagos.length)]; //Entiendo que habria que hacerlo hacia  (hechizosMagos.length - 1) porque el length seria 5?
         default:
