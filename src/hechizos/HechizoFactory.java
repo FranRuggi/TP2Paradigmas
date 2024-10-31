@@ -1,33 +1,35 @@
 package hechizos;
 
-import java.util.Random;
 
-import personajes.TipoPersonaje;
+
 
 public class HechizoFactory {
-	public static Hechizo crearHechizo(TipoPersonaje tipoPersonaje) {
-        Random rand = new Random();
-        switch(tipoPersonaje) {
-        case MAGO:
-            Hechizo[] hechizosMagos = {
-        		new Protego(),
-        		new Expelliarmus(),
-        		new Stupefy(),
-        		new PetrificusTotalus(),
-        		new ExpectoPatronum()
-            };
-            return hechizosMagos[rand.nextInt(hechizosMagos.length)]; //Entiendo que habria que hacerlo hacia  (hechizosMagos.length - 1) porque el length seria 5? 
-        case MORTIFAGO:
-            Hechizo[] hechizosMortifagos = {
-	    		new Protego(),
-	    		new Imperius(),
-	    		new Crucio(),
-	    		new AvadaKedavra(),
-	    		new Sectumsempra2()
-            };
-            return hechizosMortifagos[rand.nextInt(hechizosMortifagos.length)]; //Entiendo que habria que hacerlo hacia  (hechizosMagos.length - 1) porque el length seria 5?
-        default:
-            throw new IllegalArgumentException("Tipo de personaje desconocido");
+	
+    public static Hechizo crearHechizo(String nombreHechizo) {
+    	
+        switch (nombreHechizo.toLowerCase()) {
+            case "protego":
+                return new Protego();
+            case "expelliarmus":
+                return new Expelliarmus();
+            case "stupefy":
+                return new Stupefy();
+            case "petrificustotalus":
+                return new PetrificusTotalus();
+            case "expectopatronum":
+                return new ExpectoPatronum();
+            case "imperius":
+                return new Imperius();
+            case "crucio":
+                return new Crucio();
+            case "avadakedavra":
+                return new AvadaKedavra();
+            case "sectumsempra":
+                return new Sectumsempra2();
+            default:
+                throw new IllegalArgumentException("Nombre de hechizo desconocido: " + nombreHechizo);
+                
+                
         }
     }
 }

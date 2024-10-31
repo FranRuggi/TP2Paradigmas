@@ -12,10 +12,10 @@ hechizo_permitido(mago, expectoPatronum).
 hechizo_permitido(mortifago, protego).
 hechizo_permitido(mortifago, imperius).
 hechizo_permitido(mortifago, crucio).
-hechizo_permitido(mortifago, avadakedabra).
+hechizo_permitido(mortifago, avadakedavra).
 hechizo_permitido(mortifago, sectumsempra).
 
-hechizo(avadakedabra, 100).
+hechizo(avadakedavra, 100).
 hechizo(crucio, 50).
 hechizo(stupefy, 30).
 hechizo(sectumsempra, 60).

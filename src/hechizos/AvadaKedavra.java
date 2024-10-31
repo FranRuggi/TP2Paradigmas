@@ -3,6 +3,7 @@ package hechizos;
 import personajes.Personaje;
 
 public class AvadaKedavra implements Hechizo {
+	
 	private static final int COSTO = 100;
 
 	@Override

@@ -54,20 +54,16 @@ public class Batallon {
 		                hechizos.add(hechizo.name());
 		            }
 		        }
-		        //Tenemos la lista preparada para decidir que hechizo crear en base a la disponibilidad del personaje atacante
-		        
-		        //En este momento deberiamos ser capaces de elegir de forma random un hechizo dentro de los disponibles que tiene el atacante
-		        
-		        rand.nextInt((hechizos.size()));
-				Hechizo hechizo = HechizoFactory.crearHechizo(atacante.getTipo());
-				boolean hechizoEjecutado = hechizo.ejecutar(atacante, objetivo); // Ejecutar hechizo
-
-				if (!hechizoEjecutado) {
-					System.out.println(atacante.getNombre() + " no tiene suficientes puntos de magia para lanzar "
-							+ hechizo.obtenerNombre() + ".");
-				}
-
-				// Eliminar personajes con puntos de vida en cero
+		      //Tenemos la lista preparada para decidir que hechizo crear en base a la disponibilidad del personaje atacante
+		      //En este momento deberiamos ser capaces de elegir de forma random un hechizo dentro de los disponibles que tiene el atacante
+		        if(!hechizos.isEmpty()) {
+		        	String hechizo = hechizos.get(rand.nextInt(hechizos.size()));
+		        	Hechizo hechizoAEjecutar = HechizoFactory.crearHechizo(hechizo);
+		        	hechizoAEjecutar.ejecutar(atacante, objetivo); // Ejecutar hechizo --> Nunca va a poder darnos false, ya que solo se eligen hechizos que puedan ejecutar
+		        } else {
+		        	System.out.println(atacante.getNombre() + " no tiene suficientes puntos de magia para lanzar hechizos, pierde el turno. ");
+		        }
+		        // Eliminar personajes con puntos de vida en cero
 				otroBatallon.eliminarPersonajesInactivos();
 			}
 		}
