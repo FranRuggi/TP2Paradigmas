@@ -1,8 +1,5 @@
 package hechizos;
 
-
-
-
 public class HechizoFactory {
 	
     public static Hechizo crearHechizo(String nombreHechizo) {
