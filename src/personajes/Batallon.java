@@ -1,6 +1,7 @@
 package personajes;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -17,12 +18,11 @@ import hechizos.Hechizo;
 import hechizos.HechizoFactory;
 
 public class Batallon {
-	private List<Personaje> personajes = new ArrayList<Personaje>();
-	private List<Hechizo> hechizoLanzadoEquipo = new ArrayList<Hechizo>();
 	private Random rand = new Random();
-	private Set<Hechizo> hechizosLanzadosEquipoRonda = new HashSet<Hechizo>();
-	//marca del mapa
-	public Map<Personaje,Hechizo> hechizosLanzadosPersonajeRonda = new HashMap<Personaje,Hechizo>();
+	private List<Personaje> personajes = new ArrayList<Personaje>();
+	private List<Hechizo> hechizosLanzadosEquipo = new ArrayList<Hechizo>();
+	private Set<Hechizo> hechizosLanzadosEquipoRonda = new HashSet<Hechizo>(); // Se utiliza para verificar que no se tire el mismo hechizo en las rondas 
+	private Map<Personaje, Hechizo[]> hechizosLanzadosPorPersonaje = new HashMap<Personaje, Hechizo[]>();
 	
 	public void agregarPersonaje(Personaje personaje) {
 		personajes.add(personaje);
@@ -82,11 +82,9 @@ public class Batallon {
 		        	String hechizo = hechizos.get(rand.nextInt(hechizos.size()));
 		        	Hechizo hechizoAEjecutar = HechizoFactory.crearHechizo(hechizo);
 		        	//Historial de hechizosLanzados por equipo
-		        	this.hechizoLanzadoEquipo.add(hechizoAEjecutar);
+		        	this.hechizosLanzadosEquipo.add(hechizoAEjecutar);
 		        	hechizoAEjecutar.ejecutar(atacante, objetivo); // Ejecutar hechizo --> Nunca va a poder darnos false, ya que solo se eligen hechizos que puedan ejecutar
-		        	//marca del mapa
-		        	this.hechizosLanzadosPersonajeRonda.put(atacante,hechizoAEjecutar);
-		        	//hechizosLanzadosEquipoRonda utilizada para verificar que no tiren el mismo hechizo en las rondas 
+		        	agregarHechizoLanzado(atacante, hechizoAEjecutar);
 		        	this.hechizosLanzadosEquipoRonda.add(hechizoAEjecutar);
 		        } else {
 		        	
@@ -103,6 +101,30 @@ public class Batallon {
 		for (Personaje personaje : personajes) {
 			personaje.incrementarNivelMagia(rand.nextInt(20, 50));
 		}
+	}
+	
+	public void mostrarHechizosLanzadosPorPersonaje() {
+		for (Map.Entry<Personaje, Hechizo[]> entry : this.hechizosLanzadosPorPersonaje.entrySet()) {
+		    Personaje personaje = entry.getKey();
+		    Hechizo[] hechizos = entry.getValue();
+		    
+		    System.out.println("Personaje: " + personaje.getNombre() + ", Hechizos lanzados: ");
+		    for(Hechizo hechizo : hechizos) {
+		    	System.out.println(hechizo.obtenerNombre());
+		    }
+		}
+	}
+	
+	private void agregarHechizoLanzado(Personaje personaje, Hechizo hechizo) {
+		Hechizo[] hechizosPersonaje = hechizosLanzadosPorPersonaje.get(personaje);
+
+		if (hechizosPersonaje == null)
+			hechizosPersonaje = new Hechizo[] { hechizo };
+		else {
+			hechizosPersonaje = Arrays.copyOf(hechizosPersonaje, hechizosPersonaje.length + 1);
+			hechizosPersonaje[hechizosPersonaje.length - 1] = hechizo;
+		}
+		hechizosLanzadosPorPersonaje.put(personaje, hechizosPersonaje);
 	}
 
 	private Personaje obtenerPersonajeSaludable() {

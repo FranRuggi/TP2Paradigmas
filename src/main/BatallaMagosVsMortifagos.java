@@ -1,10 +1,7 @@
 package main;
-import java.util.Map;
 import java.util.Random;
 
-import hechizos.Hechizo;
 import personajes.Batallon;
-import personajes.Personaje;
 import personajes.PersonajeFactory;
 
 public class BatallaMagosVsMortifagos {
@@ -38,13 +35,6 @@ public class BatallaMagosVsMortifagos {
 					System.out.println("Turno de los Magos:");
 					batallonMagos.atacar(batallonMortifagos);
 				}
-			}
-			//marca del mapa
-			for (Map.Entry<Personaje, Hechizo> entry : batallonMagos.hechizosLanzadosPersonajeRonda.entrySet()) {
-			    Personaje personaje = entry.getKey();
-			    Hechizo hechizo = entry.getValue();
-			    
-			    System.out.println("Personaje: " + personaje.getNombre() + ", Hechizo lanzado: " + hechizo.obtenerNombre());
 			}
 
 			System.out.println("----------------------------");
