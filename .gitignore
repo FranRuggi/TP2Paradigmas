@@ -1,0 +1,63 @@
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.zip
+*.tar.gz
+*.rar
+*.log
+*.jmh
+hs_err_pid*
+replay_pid*
+*.hprof
+*.class
+
+target/
+build/
+bin/
+# Eclipse specific
+.settings/
+# Intellij specific
+.idea
+*.iml
+*.ipr
+*.iws
+out/
+
+# Haskell
+*.hi
+*.o
+*.dyn_hi
+*.dyn_o
+dist/
+dist-newstyle/
+cabal.sandbox.config
+cabal.sandbox.config.lock
+cabal.project.local
+cabal.project.local~
+cabal.project.freeze
+cabal.project.freeze~
+.stack-work/
+.stack-work/*
+
+# Prolog
+*.qlf
+*.sav
+*.db
+
+# Common files
+*.log
+*.tmp
+*.temp
+*.swp
+.DS_Store
+*.sublime-workspace
+*.sublime-project
+.vscode/
+*.log
+*.aux
+*.toc
+*.out
+*~
