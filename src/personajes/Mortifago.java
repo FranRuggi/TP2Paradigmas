@@ -1,7 +1,7 @@
 package personajes;
 
 import hechizos.Hechizo;
-import pociones.Pociones;
+import pociones.Pocion;
 
 public class Mortifago extends Personaje {
 
@@ -20,7 +20,7 @@ public class Mortifago extends Personaje {
 	}
 
 	@Override
-	public void lanzarPocion(Personaje objetivo, Pociones pocion) {
+	public void lanzarPocion(Personaje objetivo, Pocion pocion) {
 		pocion.aplicarEfecto(objetivo);
 	}
 }

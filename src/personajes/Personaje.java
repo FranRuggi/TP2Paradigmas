@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hechizos.Hechizo;
-import pociones.Pociones;
+import pociones.Pocion;
 
 public abstract class Personaje {
 	protected String nombre;
@@ -25,7 +25,7 @@ public abstract class Personaje {
 
 	public abstract TipoPersonaje getTipo();
 
-	public abstract void lanzarPocion(Personaje objetivo, Pociones pocion);
+	public abstract void lanzarPocion(Personaje objetivo, Pocion pocion);
 
 	public void desarmar() {
 		turnoPerdido = true;

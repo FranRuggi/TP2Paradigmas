@@ -3,9 +3,9 @@ package pociones;
 import java.util.Random;
 
 public class PocionFactory {
-    public static Pociones crearPocion() {
+    public static Pocion crearPocion() {
     	Random rand = new Random();
-    	Pociones[] PocionesDisponibles = {
+    	Pocion[] PocionesDisponibles = {
     			new Curacion(),
     			new NivelMagia()
     	};

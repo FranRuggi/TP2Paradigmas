@@ -3,7 +3,7 @@ package pociones;
 import personajes.Personaje;
 import personajes.TipoPersonaje;
 
-public class NivelMagia implements Pociones {
+public class NivelMagia implements Pocion {
 
 	@Override
 	public void aplicarEfecto(Personaje objetivo) {

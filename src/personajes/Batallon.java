@@ -17,7 +17,7 @@ import org.jpl7.Term;
 import hechizos.Hechizo;
 import hechizos.HechizoFactory;
 import pociones.PocionFactory;
-import pociones.Pociones;
+import pociones.Pocion;
 
 public class Batallon {
 	private List<Personaje> personajes = new ArrayList<Personaje>();
@@ -101,7 +101,7 @@ public class Batallon {
 					this.hechizosLanzadosEquipoRonda.add(hechizoAEjecutar);
 				} else {
 					if (atacante.getInventarioPociones() > 0) {
-						Pociones pocionALanzar = PocionFactory.crearPocion();
+						Pocion pocionALanzar = PocionFactory.crearPocion();
 						pocionALanzar.aplicarEfecto(atacante);
 						atacante.actualizarInventarioPociones(1);
 						System.out.println(
