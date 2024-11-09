@@ -12,11 +12,12 @@
 hs_err_pid*
 replay_pid*
 *.hprof
-*.class
+
 
 target/
 build/
 bin/
+
 # Eclipse specific
 .settings/
 # Intellij specific
