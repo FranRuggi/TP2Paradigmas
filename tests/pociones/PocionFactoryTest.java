@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class PocionFactoryTest {
 
 	@Test
-	void testCrearPocion() {
+	void testCrearPocion_() {
 		fail("Not yet implemented");
 	}
 
