@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hechizos.Hechizo;
+import pociones.Pociones;
 
 public abstract class Personaje {
 	protected String nombre;
@@ -11,6 +12,7 @@ public abstract class Personaje {
 	protected int puntosVida;
 	protected boolean turnoPerdido = false;
 	protected List<Hechizo> hechizosLanzados;
+	protected int inventarioPociones = 3;
 
 	public Personaje(String nombre, int nivelMagia, int puntosVida) {
 		this.nombre = nombre;
@@ -23,6 +25,7 @@ public abstract class Personaje {
 
 	public abstract TipoPersonaje getTipo();
 
+	public abstract void lanzarPocion(Personaje objetivo, Pociones pocion);
 	public void desarmar() {
 		turnoPerdido = true;
 	}
@@ -35,8 +38,6 @@ public abstract class Personaje {
 		turnoPerdido = true;
 	}
 
-	// Método que se llama al iniciar cada turno para verificar si el personaje
-	// puede actuar
 	public boolean puedeActuar() {
 		if (turnoPerdido) {
 			turnoPerdido = false; // Resetea el turno perdido para el siguiente turno
@@ -63,9 +64,15 @@ public abstract class Personaje {
 		System.out.println(
 				nombre + " ha usado " + cantidad + " puntos de magia. Puntos de magia restantes: " + nivelMagia);
 	}
-
+	
+	
+	public void incrementarPuntosVida(int cantidad) {
+		setPuntosVida(this.puntosVida + cantidad);
+	}
+	
+	
 	public void incrementarNivelMagia(int cantidad) {
-		setNivelMagia(nivelMagia + cantidad);
+		setNivelMagia(this.nivelMagia + cantidad);
 	}
 
 	private void setNivelMagia(int nivelMagia) {
@@ -73,19 +80,19 @@ public abstract class Personaje {
 	}
 
 	public boolean estaSaludable() {
-		return puntosVida > 0;
+		return this.puntosVida > 0;
 	}
 
 	public String getNombre() {
-		return nombre;
+		return this.nombre;
 	}
 
 	public int getPuntosVida() {
-		return puntosVida;
+		return this.puntosVida;
 	}
 
 	public int getNivelMagia() {
-		return nivelMagia;
+		return this.nivelMagia;
 	}
 
 	public void setPuntosVida(int puntosVida) {
@@ -93,6 +100,18 @@ public abstract class Personaje {
 	}
 
 	public boolean getTurnoPerdido() {
-		return turnoPerdido;
+		return this.turnoPerdido;
+	}
+
+	public int getInventarioPociones() {
+		return this.inventarioPociones;
+	}
+
+	public void setInventarioPociones(int inventarioPociones) {
+		this.inventarioPociones = inventarioPociones;
+	}
+
+	public void actualizarInventarioPociones(int cantidad) {
+		this.inventarioPociones = (this.inventarioPociones - cantidad);
 	}
 }

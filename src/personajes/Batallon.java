@@ -15,6 +15,8 @@ import org.jpl7.Term;
 
 import hechizos.Hechizo;
 import hechizos.HechizoFactory;
+import pociones.PocionFactory;
+import pociones.Pociones;
 
 public class Batallon {
 	private List<Personaje> personajes = new ArrayList<Personaje>();
@@ -89,9 +91,14 @@ public class Batallon {
 		        	//hechizosLanzadosEquipoRonda utilizada para verificar que no tiren el mismo hechizo en las rondas 
 		        	this.hechizosLanzadosEquipoRonda.add(hechizoAEjecutar);
 		        } else {
+		        	if(atacante.getInventarioPociones() > 0) {
+		        		Pociones pocionALanzar = PocionFactory.crearPocion();
+		        		pocionALanzar.aplicarEfecto(atacante);	
+		        		atacante.actualizarInventarioPociones(1);
+		        		System.out.println(atacante.getNombre() + " Arrojo una pocion de " + pocionALanzar.obtenerNombre());
+		        	}else
+		        		System.out.println(atacante.getNombre() + " Pierde el turno por falta de recursos");
 		        	
-		        	//Agregar pociones
-		        	System.out.println(atacante.getNombre() + " no tiene suficientes puntos de magia para lanzar hechizos, pierde el turno. ");
 		        }
 		        // Eliminar personajes con puntos de vida en cero
 				otroBatallon.eliminarPersonajesInactivos();

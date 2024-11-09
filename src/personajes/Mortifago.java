@@ -1,8 +1,10 @@
 package personajes;
 
 import hechizos.Hechizo;
+import pociones.Pociones;
 
 public class Mortifago extends Personaje {
+
 	public Mortifago(String nombre, int nivelMagia, int puntosVida) {
         super(nombre, nivelMagia, puntosVida);
     }
@@ -15,5 +17,10 @@ public class Mortifago extends Personaje {
     @Override
 	public TipoPersonaje getTipo() {
 		return TipoPersonaje.MORTIFAGO;
+	}
+
+	@Override
+	public void lanzarPocion(Personaje objetivo, Pociones pocion) {
+		pocion.aplicarEfecto(objetivo);
 	}
 }
