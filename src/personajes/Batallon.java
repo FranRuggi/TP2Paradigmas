@@ -1,7 +1,6 @@
 package personajes;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -16,21 +15,22 @@ import org.jpl7.Term;
 
 import hechizos.Hechizo;
 import hechizos.HechizoFactory;
+import pociones.PocionFactory;
+import pociones.Pociones;
 
 public class Batallon {
-	private Random rand = new Random();
 	private List<Personaje> personajes = new ArrayList<Personaje>();
-	private List<Hechizo> hechizosLanzadosEquipo = new ArrayList<Hechizo>();
-	private Set<Hechizo> hechizosLanzadosEquipoRonda = new HashSet<Hechizo>(); // Se utiliza para verificar que no se
-																				// tire el mismo hechizo en las rondas
+	private List<Hechizo> hechizoLanzadoEquipo = new ArrayList<Hechizo>();
+	private Random rand = new Random();
+	private Set<Hechizo> hechizosLanzadosEquipoRonda = new HashSet<Hechizo>();
 	private Map<Personaje, Hechizo[]> hechizosLanzadosPorPersonaje = new HashMap<Personaje, Hechizo[]>();
 
 	public void agregarPersonaje(Personaje personaje) {
-		this.personajes.add(personaje);
+		personajes.add(personaje);
 	}
 
 	public boolean tienePersonajesSaludables() {
-		return this.personajes.stream().anyMatch(Personaje::estaSaludable);
+		return personajes.stream().anyMatch(Personaje::estaSaludable);
 	}
 
 	public void atacar(Batallon otroBatallon) {
@@ -93,13 +93,21 @@ public class Batallon {
 					hechizoAEjecutar.ejecutar(atacante, objetivo); // Ejecutar hechizo --> Nunca va a poder darnos
 																	// false, ya que solo se eligen hechizos que puedan
 																	// ejecutar
+					// marca del mapa
 					agregarHechizoLanzado(atacante, hechizoAEjecutar);
+					// hechizosLanzadosEquipoRonda utilizada para verificar que no tiren el mismo
+					// hechizo en las rondas
 					this.hechizosLanzadosEquipoRonda.add(hechizoAEjecutar);
 				} else {
+					if (atacante.getInventarioPociones() > 0) {
+						Pociones pocionALanzar = PocionFactory.crearPocion();
+						pocionALanzar.aplicarEfecto(atacante);
+						atacante.actualizarInventarioPociones(1);
+						System.out.println(
+								atacante.getNombre() + " Arrojo una pocion de " + pocionALanzar.obtenerNombre());
+					} else
+						System.out.println(atacante.getNombre() + " Pierde el turno por falta de recursos");
 
-					// Agregar pociones
-					System.out.println(atacante.getNombre()
-							+ " no tiene suficientes puntos de magia para lanzar hechizos, pierde el turno. ");
 				}
 				// Eliminar personajes con puntos de vida en cero
 				otroBatallon.eliminarPersonajesInactivos();
@@ -111,6 +119,17 @@ public class Batallon {
 		for (Personaje personaje : personajes) {
 			personaje.incrementarNivelMagia(rand.nextInt(20, 50));
 		}
+	}
+
+	private Personaje obtenerPersonajeSaludable() {
+		List<Personaje> personajesSaludables = new ArrayList<>();
+		for (Personaje personaje : personajes) {
+			if (personaje.estaSaludable()) {
+				personajesSaludables.add(personaje);
+			}
+		}
+		return personajesSaludables.isEmpty() ? null
+				: personajesSaludables.get(rand.nextInt(personajesSaludables.size()));
 	}
 
 	public void mostrarHechizosLanzadosPorPersonaje() {
@@ -135,17 +154,6 @@ public class Batallon {
 			hechizosPersonaje[hechizosPersonaje.length - 1] = hechizo;
 		}
 		hechizosLanzadosPorPersonaje.put(personaje, hechizosPersonaje);
-	}
-
-	private Personaje obtenerPersonajeSaludable() {
-		List<Personaje> personajesSaludables = new ArrayList<>();
-		for (Personaje personaje : personajes) {
-			if (personaje.estaSaludable()) {
-				personajesSaludables.add(personaje);
-			}
-		}
-		return personajesSaludables.isEmpty() ? null
-				: personajesSaludables.get(rand.nextInt(personajesSaludables.size()));
 	}
 
 	private void eliminarPersonajesInactivos() {

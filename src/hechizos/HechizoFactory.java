@@ -1,9 +1,9 @@
 package hechizos;
 
 public class HechizoFactory {
-	
+
     public static Hechizo crearHechizo(String nombreHechizo) {
-    	
+
         switch (nombreHechizo.toLowerCase()) {
             case "protego":
                 return new Protego();
@@ -25,8 +25,7 @@ public class HechizoFactory {
                 return new Sectumsempra2();
             default:
                 throw new IllegalArgumentException("Nombre de hechizo desconocido: " + nombreHechizo);
-                
-                
+
         }
     }
 }

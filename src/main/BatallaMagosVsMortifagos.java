@@ -1,4 +1,5 @@
 package main;
+
 import java.util.Random;
 
 import personajes.Batallon;
@@ -19,7 +20,7 @@ public class BatallaMagosVsMortifagos {
 		while (batallonMagos.tienePersonajesSaludables() && batallonMortifagos.tienePersonajesSaludables()) {
 			batallonMagos.recuperarMagia();
 			batallonMortifagos.recuperarMagia();
-		    
+
 			// Alternar ataques entre facciones
 			if (rand.nextBoolean()) {
 				System.out.println("Turno de los Magos:");
