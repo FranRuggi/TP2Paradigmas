@@ -1,6 +1,7 @@
 package personajes;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -20,7 +21,7 @@ import pociones.Pociones;
 
 public class Batallon {
 	private List<Personaje> personajes = new ArrayList<Personaje>();
-	private List<Hechizo> hechizoLanzadoEquipo = new ArrayList<Hechizo>();
+	private List<Hechizo> hechizosLanzadosEquipo = new ArrayList<Hechizo>();
 	private Random rand = new Random();
 	private Set<Hechizo> hechizosLanzadosEquipoRonda = new HashSet<Hechizo>();
 	private Map<Personaje, Hechizo[]> hechizosLanzadosPorPersonaje = new HashMap<Personaje, Hechizo[]>();
