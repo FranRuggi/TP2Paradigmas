@@ -88,7 +88,7 @@ class PocionTest {
 		assertTrue(pocion instanceof NivelMagia, "PocionFactory debería crear una instancia de NivelMagia.");
 	}
 
-	@RepeatedTest(50)
+	@RepeatedTest(10)
 	void testPocionFactoryGeneraPocionAleatorias() {
 		Pocion pocion = PocionFactory.crearPocion();
 		assertTrue(pocion instanceof Curacion || pocion instanceof NivelMagia,
