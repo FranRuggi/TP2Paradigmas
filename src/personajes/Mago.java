@@ -17,7 +17,4 @@ public class Mago extends Personaje {
 		return TipoPersonaje.MAGO;
 	}
 
-	public void recibirProteccionContraOscuro() {
-
-	}
 }

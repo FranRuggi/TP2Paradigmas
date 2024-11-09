@@ -10,21 +10,19 @@ public abstract class Personaje {
 	protected int nivelMagia;
 	protected int puntosVida;
 	protected boolean turnoPerdido = false;
-	protected List<Hechizo> hechizos;
+	protected List<Hechizo> hechizosLanzados;
 
 	public Personaje(String nombre, int nivelMagia, int puntosVida) {
 		this.nombre = nombre;
 		this.nivelMagia = nivelMagia;
 		this.puntosVida = puntosVida;
-		this.hechizos = new ArrayList<Hechizo>();
+		this.hechizosLanzados = new ArrayList<Hechizo>();
 	}
 
 	public abstract boolean lanzarHechizo(Personaje objetivo, Hechizo hechizo);
 
 	public abstract TipoPersonaje getTipo();
 
-	//Al elegir hacer la logica de los hechizos con prolog, no se nos esta ocurriendo una manera de llevar esto a cabo
-	//Estaria bueno re-verlo por el tiempo que tenemos.
 	public void desarmar() {
 		turnoPerdido = true;
 	}
@@ -46,15 +44,8 @@ public abstract class Personaje {
 		}
 		return true;
 	}
-
-	// Método para resetear efectos de control, aturdimiento y petrificación al
-	// finalizar el turno
-	public void finDeTurno() {
-		turnoPerdido = false;
-	}
-
-	public void agregarHechizo(Hechizo hechizo) {
-		hechizos.add(hechizo);
+	public void agregarHechizoLanzado(Hechizo hechizo) {
+		hechizosLanzados.add(hechizo);
 	}
 
 	public void recibirDaño(int danio) {
