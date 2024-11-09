@@ -10,7 +10,7 @@ public class Crucio implements Hechizo {
 		if (lanzador.getNivelMagia() < COSTO)
 			return false;
 		lanzador.disminuirNivelMagia(COSTO);
-		objetivo.recibirDaño(50); // Inflige un daño intenso
+		objetivo.recibirDaño(50);
 		System.out.println(objetivo.getNombre() + " sufre de un dolor insoportable debido a Cruciatus.");
 		return true;
 	}

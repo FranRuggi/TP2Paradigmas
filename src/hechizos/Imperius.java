@@ -10,7 +10,7 @@ public class Imperius implements Hechizo {
 		if (lanzador.getNivelMagia() < COSTO)
 			return false;
 		lanzador.disminuirNivelMagia(COSTO);
-		objetivo.recibirDaño(30); // Controla al objetivo temporalmente
+		objetivo.recibirDaño(30);
 		System.out
 				.println(lanzador.getNombre() + " está controlando a " + objetivo.getNombre() + " gracias a Imperius.");
 		return true;

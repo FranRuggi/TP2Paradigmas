@@ -1,6 +1,5 @@
 package personajes;
 
 public enum TipoPersonaje {
-	MAGO,
-	MORTIFAGO
+	MAGO, MORTIFAGO
 }

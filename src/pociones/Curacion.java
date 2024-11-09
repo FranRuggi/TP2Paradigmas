@@ -7,7 +7,7 @@ public class Curacion implements Pociones {
 
 	@Override
 	public void aplicarEfecto(Personaje objetivo) {
-		if (objetivo.getTipo() == TipoPersonaje.MAGO) 
+		if (objetivo.getTipo() == TipoPersonaje.MAGO)
 			objetivo.incrementarPuntosVida(55);
 		else
 			objetivo.incrementarPuntosVida(25);

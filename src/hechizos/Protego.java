@@ -10,8 +10,8 @@ public class Protego implements Hechizo {
 		if (lanzador.getNivelMagia() < COSTO)
 			return false;
 		lanzador.disminuirNivelMagia(COSTO);
-		lanzador.recibirDaño(-20); // Ejemplo de incremento de defensa
-		System.out.println("Un escudo mágico protege a " + lanzador.getNombre()); // Cambio en lanzador
+		lanzador.recibirDaño(-20); // Incremento de defensa
+		System.out.println("Un escudo mágico protege a " + lanzador.getNombre());
 		return true;
 	}
 

@@ -13,7 +13,7 @@ import personajes.Personaje;
 
 class HechizoTest {
 
-    private Personaje lanzador;
+	private Personaje lanzador;
     private Personaje objetivo;
 
     @BeforeEach
@@ -125,7 +125,7 @@ class HechizoTest {
 
     @Test
     void testSectumsempra_MagiaSuficiente_InfligeDanioCritico() {
-        Hechizo hechizo = new Sectumsempra2();
+        Hechizo hechizo = new Sectumsempra();
         assertTrue(hechizo.ejecutar(lanzador, objetivo));
         assertEquals(50, objetivo.getPuntosVida());
     }
@@ -144,4 +144,5 @@ class HechizoTest {
         assertFalse(hechizo.ejecutar(lanzador, objetivo));
         assertFalse(objetivo.getTurnoPerdido());
     }
+
 }
