@@ -125,7 +125,7 @@ class HechizoTest {
 
     @Test
     void testSectumsempra_MagiaSuficiente_InfligeDanioCritico() {
-        Hechizo hechizo = new Sectumsempra();
+        Hechizo hechizo = new Sectumsempra2();
         assertTrue(hechizo.ejecutar(lanzador, objetivo));
         assertEquals(50, objetivo.getPuntosVida());
     }

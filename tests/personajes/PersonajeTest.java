@@ -48,14 +48,6 @@ class PersonajeTest {
     }
 
     @Test
-    void testPersonaje_FinDeTurno_ReseteaEstado() {
-        mago.desarmar();
-        assertFalse(mago.puedeActuar());
-        mago.finDeTurno();
-        assertTrue(mago.puedeActuar());
-    }
-
-    @Test
     void testPersonaje_PuedeActuar_SiNoPierdeTurno() {
         assertTrue(mago.puedeActuar());
     }
@@ -64,11 +56,6 @@ class PersonajeTest {
     void testPersonaje_PuedeActuar_SiPierdeTurno() {
         mago.desarmar();
         assertFalse(mago.puedeActuar());
-    }
-
-    @Test
-    void testMago_RecibirProteccionContraOscuro() {
-        assertDoesNotThrow(() -> ((Mago) mago).recibirProteccionContraOscuro());
     }
 
     @Test

@@ -27,9 +27,10 @@ hechizo(expectoPatronum, 30).
 
 % Nos devuelve una lista con todos los hechizos que el personaje actual puede ejecutar
 % dependiendo del tipo de personaje y del nivel de magia que tenga
-hechizos_disponibles(NivelMagia, TipoPersonaje, Hechizos) :-
+hechizos_disponibles(NivelMagia, TipoPersonaje, HechizosLanzados, Hechizos) :-
     findall(Hechizo,
             (hechizo(Hechizo, Costo),
              Costo =< NivelMagia,
-             hechizo_permitido(TipoPersonaje, Hechizo)),
+             hechizo_permitido(TipoPersonaje, Hechizo),
+             \+ member(Hechizo, HechizosLanzados)),  % Verifica que el hechizo no esté en la lista de lanzados
             Hechizos).

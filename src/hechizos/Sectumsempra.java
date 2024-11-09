@@ -29,14 +29,6 @@ public class Sectumsempra implements Hechizo {
 		System.out.println(lanzador.getNombre() + " aplica un daño oscuro y critico a " + objetivo.getNombre() + " debido a Sectumsempra");
 		return true;
 	}
-	/*
-	 * Ideas de prolog para reemplazar logica de verifiacion de lanzamiento de hechizos
-	 * ejecutar(COSTOHECHIZO,MAGIALANZADOR) : -
-	 * 			MAGIALANZADOR >= COSTOHECHIZO.
-	 * hechizo(SECTUMSEMPRA) :-
-	 * 		   			
-	 */
-	
 
 	@Override
 	public String obtenerNombre() {
