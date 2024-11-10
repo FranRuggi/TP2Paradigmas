@@ -60,11 +60,11 @@ public abstract class Personaje {
 
 	public void disminuirNivelMagia(int cantidad) {
 		if (cantidad > nivelMagia)
-			setNivelMagia(0);
+			this.setNivelMagia(0);
 		else
-			setNivelMagia(nivelMagia - cantidad);
+			this.setNivelMagia(nivelMagia - cantidad);
 		System.out.println(
-				nombre + " ha usado " + cantidad + " puntos de magia. Puntos de magia restantes: " + nivelMagia);
+				this.nombre + " ha usado " + cantidad + " puntos de magia. Puntos de magia restantes: " + this.nivelMagia);
 	}
 
 	public void incrementarPuntosVida(int cantidad) {
@@ -75,7 +75,7 @@ public abstract class Personaje {
 		setNivelMagia(this.nivelMagia + cantidad);
 	}
 
-	private void setNivelMagia(int nivelMagia) {
+	protected void setNivelMagia(int nivelMagia) {
 		this.nivelMagia = nivelMagia;
 	}
 

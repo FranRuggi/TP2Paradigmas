@@ -15,11 +15,11 @@ import personajes.mortifagos.Comandante;
 import personajes.mortifagos.Seguidor;
 
 public class PersonajeFactory {
-	private static final Random rand = new Random();
+	protected static Random rand = new Random();
 	
 	//Cargamos los archivos Magon.in y Mortifagor.in para la asignacion de nombres de forma aleatoria
-	private static List<String> nombresMagos;
-	private static List<String> nombresMortifagos;
+	protected static List<String> nombresMagos;
+	protected static List<String> nombresMortifagos;
 
 	static {
 		try {

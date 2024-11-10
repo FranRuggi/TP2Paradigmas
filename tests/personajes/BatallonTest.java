@@ -24,43 +24,43 @@ class BatallonTest {
 
         personajeSaludable = new Mago("Harry", 100, 50);
         personajeHerido = new Mortifago("Voldemort", 10, 60);
+        batallon1.agregarPersonaje(personajeSaludable);
+        batallon2.agregarPersonaje(personajeHerido);
     }
 
     @Test
     void agregarPersonajeTest() {
-        batallon1.agregarPersonaje(personajeSaludable);
+        
         assertTrue(batallon1.tienePersonajesSaludables());
     }
 
     @Test
     void noPersonajesSaludablesInicialmenteTest() {
-        assertFalse(batallon1.tienePersonajesSaludables());
+        personajeSaludable.setPuntosVida(0);
+        batallon1.eliminarPersonajesInactivos();
+    	assertFalse(batallon1.tienePersonajesSaludables());
     }
 
     @Test
     void tienePersonajesSaludablesTrueTest() {
-        batallon1.agregarPersonaje(personajeSaludable);
         assertTrue(batallon1.tienePersonajesSaludables());
     }
 
     @Test
     void tienePersonajesSaludablesFalseTest() {
         personajeSaludable.setPuntosVida(0);
-        batallon1.agregarPersonaje(personajeSaludable);
         assertFalse(batallon1.tienePersonajesSaludables());
     }
 
     @Test
     void atacarPersonajeAturdidoTest() {
         personajeSaludable.aturdir();
-        batallon1.agregarPersonaje(personajeSaludable);
         batallon1.atacar(batallon2);
         assertFalse(batallon2.tienePersonajesSaludables());
     }
 
     @Test
     void atacarBatallonVacioTest() {
-        batallon1.agregarPersonaje(personajeSaludable);
         batallon1.atacar(batallon2);
         assertTrue(batallon1.tienePersonajesSaludables());
     }
@@ -68,24 +68,22 @@ class BatallonTest {
     @Test
     void atacarPersonajeSinRecursosTest() {
         personajeSaludable.setInventarioPociones(0);
-        batallon1.agregarPersonaje(personajeSaludable);
         batallon1.atacar(batallon2);
         assertTrue(batallon1.tienePersonajesSaludables());
     }
 
     @Test
     void ataqueReduceVidaEnemigoTest() {
-        personajeHerido.setPuntosVida(100);
-        batallon1.agregarPersonaje(personajeSaludable);
-        batallon2.agregarPersonaje(personajeHerido);
+        int vidaInicial = personajeHerido.getPuntosVida();
+        
         batallon1.atacar(batallon2);
-        assertTrue(personajeHerido.getPuntosVida() < 100);
+        assertTrue(personajeHerido.getPuntosVida() < vidaInicial);
     }
 
     @Test
     void lanzarPocionSiNoHayHechizosTest() {
         personajeSaludable.setInventarioPociones(1);
-        batallon1.agregarPersonaje(personajeSaludable);
+        personajeSaludable.setNivelMagia(0);
         batallon1.atacar(batallon2);
         assertEquals(0, personajeSaludable.getInventarioPociones());
     }
@@ -93,9 +91,8 @@ class BatallonTest {
     @Test
     void eliminarPersonajesInactivosTest() {
         personajeHerido.setPuntosVida(0);
-        batallon1.agregarPersonaje(personajeHerido);
-        batallon1.eliminarPersonajesInactivos();
-        assertFalse(batallon1.tienePersonajesSaludables());
+        batallon2.eliminarPersonajesInactivos();
+        assertFalse(batallon2.tienePersonajesSaludables());
     }
 
     @Test
@@ -108,39 +105,22 @@ class BatallonTest {
 
     @Test
     void mostrarHechizosLanzadosPorPersonajeTest() {
-        batallon1.agregarPersonaje(personajeSaludable);
         batallon1.atacar(batallon2); // Ejecutar algún hechizo
         // Verifica que se imprime el hechizo (se espera que `mostrarHechizosLanzadosPorPersonaje` no lance excepciones)
         batallon1.mostrarHechizosLanzadosPorPersonaje();
     }
-/*
-    @Test
-    void agregarHechizoLanzadoTest() {
-        batallon1.agregarPersonaje(personajeSaludable);
-        batallon1.atacar(batallon2);
-        assertFalse(batallon1.hechizosLanzadosPorPersonaje().isEmpty());
-    }
-
-    @Test
-    void ataqueNoRepiteHechizoMismaRondaTest() {
-        Hechizo primerHechizo = new Expelliarmus();
-        Hechizo segundoHechizo = new Expelliarmus();
-        batallon1.hechizosLanzadosEquipoRonda.add(primerHechizo);
-        assertFalse(batallon1.hechizosLanzadosEquipoRonda.contains(segundoHechizo));
-    }*/
 
     @Test
     void ataqueSinPersonajesNoEjecutaHechizoTest() {
-        batallon1.agregarPersonaje(personajeHerido);
         personajeHerido.setPuntosVida(0);
-        batallon1.atacar(batallon2);
-        assertTrue(batallon2.tienePersonajesSaludables());
+        batallon2.atacar(batallon1);
+        assertTrue(batallon1.tienePersonajesSaludables());
     }
 
     @Test
     void pocionAplicaEfectoCorrectoTest() {
         personajeSaludable.setInventarioPociones(1);
-        batallon1.agregarPersonaje(personajeSaludable);
+        personajeSaludable.setNivelMagia(0);
         batallon1.atacar(batallon2); // Si no hay hechizos, aplica poción
         assertEquals(0, personajeSaludable.getInventarioPociones());
     }
@@ -148,16 +128,14 @@ class BatallonTest {
     @Test
     void eliminarPersonajeInactivoCuandoVidaCeroTest() {
         personajeSaludable.setPuntosVida(0);
-        batallon1.agregarPersonaje(personajeSaludable);
         batallon1.eliminarPersonajesInactivos();
         assertFalse(batallon1.tienePersonajesSaludables());
     }
 
     @Test
     void personajePuedeRecibirDanioAlAtacarTest() {
+    	personajeHerido.setPuntosVida(100);
         int vidaInicial = personajeHerido.getPuntosVida();
-        batallon1.agregarPersonaje(personajeSaludable);
-        batallon2.agregarPersonaje(personajeHerido);
         batallon1.atacar(batallon2);
         assertTrue(personajeHerido.getPuntosVida() < vidaInicial);
     }

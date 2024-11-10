@@ -35,7 +35,7 @@ public class Batallon {
 			List<String> hechizosDisponibles = consultarHechizosDisponibles(atacante);
 			if (!hechizosDisponibles.isEmpty()) {
 				Hechizo hechizo = seleccionarHechizoDisponible(hechizosDisponibles);
-				ejecutarHechizo(atacante, objetivo, hechizo);
+				this.ejecutarHechizo(atacante, objetivo, hechizo);
 			} else if (atacante.getInventarioPociones() > 0) {
 				lanzarPocion(atacante);
 			} else {
@@ -90,7 +90,7 @@ public class Batallon {
 		String hechizoNombre = hechizosDisponibles.get(rand.nextInt(hechizosDisponibles.size()));
 		return HechizoFactory.crearHechizo(hechizoNombre);
 	}
-
+	
 	private void ejecutarHechizo(Personaje atacante, Personaje objetivo, Hechizo hechizo) {
 		hechizo.ejecutar(atacante, objetivo);
 		hechizosLanzadosEquipo.add(hechizo);
