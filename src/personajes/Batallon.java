@@ -118,7 +118,7 @@ public class Batallon {
 				.add(hechizo);
 	}
 
-	private void eliminarPersonajesInactivos() {
+	public void eliminarPersonajesInactivos() {
 		personajes.removeIf(personaje -> !personaje.estaSaludable());
 	}
 }
