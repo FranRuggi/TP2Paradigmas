@@ -11,7 +11,7 @@ public class PetrificusTotalus implements Hechizo {
 			return false;
 		lanzador.disminuirNivelMagia(COSTO);
 		objetivo.petrificar(); // El personaje pierde un turno
-		objetivo.recibirDaño(40);
+		objetivo.recibirDaño(25);
 		System.out.println(objetivo.getNombre() + " ha sido petrificado con Petrificus Totalus.");
 		return true;
 	}

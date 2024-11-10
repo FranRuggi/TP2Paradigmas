@@ -3,7 +3,7 @@ package hechizos;
 import personajes.Personaje;
 
 public class Protego implements Hechizo {
-	private static final int COSTO = 60;
+	private static final int COSTO = 40;
 
 	@Override
 	public boolean ejecutar(Personaje lanzador, Personaje objetivo) {

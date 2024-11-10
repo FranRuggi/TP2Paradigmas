@@ -11,6 +11,9 @@ public class NivelMagia implements Pocion {
 			objetivo.incrementarNivelMagia(30);
 		else
 			objetivo.incrementarNivelMagia(20);
+		System.out.println(objetivo.getNombre() + " a lanzado una pocion de NivelMagia, ahora tiene: " + objetivo.getNivelMagia() + " puntos de magia"
+				+ ", le quedan " + objetivo.getInventarioPociones()+ " pociones.");
+
 	}
 
 	@Override

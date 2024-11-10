@@ -48,7 +48,7 @@ public class Batallon {
 
 	public void recuperarMagia() {
 		for (Personaje personaje : personajes) {
-			personaje.incrementarNivelMagia(rand.nextInt(20, 50));
+			personaje.incrementarNivelMagia(rand.nextInt(0, 20));
 		}
 	}
 
@@ -100,9 +100,8 @@ public class Batallon {
 
 	private void lanzarPocion(Personaje atacante) {
 		Pocion pocion = PocionFactory.crearPocion();
-		pocion.aplicarEfecto(atacante);
 		atacante.actualizarInventarioPociones(-1);
-		System.out.println(atacante.getNombre() + " lanzó una poción de " + pocion.obtenerNombre());
+		pocion.aplicarEfecto(atacante);	
 	}
 
 	public void mostrarHechizosLanzadosPorPersonaje() {

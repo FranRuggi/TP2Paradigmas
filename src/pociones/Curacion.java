@@ -11,6 +11,10 @@ public class Curacion implements Pocion {
 			objetivo.incrementarPuntosVida(55);
 		else
 			objetivo.incrementarPuntosVida(25);
+		System.out.println(objetivo.getNombre() + " a lanzado una pocion de Curacion, ahora tiene: " + objetivo.getPuntosVida() 
+		+ " puntos de vida, le quedan " + objetivo.getInventarioPociones()+ " pociones");
+
+		
 	}
 
 	@Override

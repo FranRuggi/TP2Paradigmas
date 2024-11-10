@@ -112,6 +112,6 @@ public abstract class Personaje {
 	}
 
 	public void actualizarInventarioPociones(int cantidad) {
-		this.inventarioPociones = (this.inventarioPociones - cantidad);
+		this.inventarioPociones = (this.inventarioPociones + cantidad);
 	}
 }

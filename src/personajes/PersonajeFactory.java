@@ -16,6 +16,8 @@ import personajes.mortifagos.Seguidor;
 
 public class PersonajeFactory {
 	private static final Random rand = new Random();
+	
+	//Cargamos los archivos Magon.in y Mortifagor.in para la asignacion de nombres de forma aleatoria
 	private static List<String> nombresMagos;
 	private static List<String> nombresMortifagos;
 
@@ -23,8 +25,8 @@ public class PersonajeFactory {
 		try {
 			nombresMagos = cargarNombres("Magos.in");
 			nombresMortifagos = cargarNombres("Mortifagos.in");
-			Collections.shuffle(nombresMagos); // Baraja la lista para generar nombres aleatorios
-			Collections.shuffle(nombresMortifagos); // Baraja la lista para generar nombres aleatorios
+			Collections.shuffle(nombresMagos); // Mezcla la lista para generar nombres aleatorios
+			Collections.shuffle(nombresMortifagos); // Mezcla la lista para generar nombres aleatorios
 		} catch (IOException e) {
 			e.printStackTrace();
 			nombresMagos = new ArrayList<>();

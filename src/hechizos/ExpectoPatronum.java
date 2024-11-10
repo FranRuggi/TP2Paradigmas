@@ -10,7 +10,7 @@ public class ExpectoPatronum implements Hechizo {
 		if (lanzador.getNivelMagia() < COSTO)
 			return false;
 		lanzador.disminuirNivelMagia(COSTO);
-		lanzador.recibirDaño(-10);
+		lanzador.recibirDaño(-25);
 		return true;
 	}
 
