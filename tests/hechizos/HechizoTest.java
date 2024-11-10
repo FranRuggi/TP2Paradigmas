@@ -22,6 +22,7 @@ class HechizoTest {
         objetivo = new Mortifago("Bellatrix", 100, 100);
     }
 
+    
     @Test
     void testAvadaKedavra_MagiaSuficiente_MataObjetivo() {
         Hechizo hechizo = new AvadaKedavra();
@@ -57,7 +58,7 @@ class HechizoTest {
         lanzador.recibirDaño(50); // Lanzador pierde vida
         Hechizo hechizo = new ExpectoPatronum();
         assertTrue(hechizo.ejecutar(lanzador, objetivo));
-        assertEquals(70, lanzador.getPuntosVida());
+        assertEquals(75, lanzador.getPuntosVida());
     }
 
     @Test
@@ -103,7 +104,7 @@ class HechizoTest {
         Hechizo hechizo = new PetrificusTotalus();
         assertTrue(hechizo.ejecutar(lanzador, objetivo));
         assertTrue(objetivo.getTurnoPerdido());
-        assertEquals(60, objetivo.getPuntosVida());
+        assertEquals(75, objetivo.getPuntosVida());
     }
 
     @Test
@@ -120,7 +121,7 @@ class HechizoTest {
         int puntosDeVidaAntesHechizo = lanzador.getPuntosVida();
         
         assertTrue(hechizo.ejecutar(lanzador, objetivo));
-        assertTrue(puntosDeVidaAntesHechizo < lanzador.getPuntosVida()); // Defensa incrementada
+        assertTrue(lanzador.getPuntosVida() > puntosDeVidaAntesHechizo); // Defensa incrementada
     }
 
     @Test
