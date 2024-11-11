@@ -38,9 +38,6 @@ Este proyecto desarrolla un sistema de combate entre personajes magos y mortífa
 ## El Combate
 La clase `Main` inicia el combate entre dos batallones, alternando ataques por rondas entre los equipos, con lógica para balancear el juego.
 
-## Conclusión
-El proyecto integró varios patrones de diseño, haciendo el código flexible y escalable. La colaboración entre paradigmas, usando Prolog para reglas complejas, enriqueció la experiencia de desarrollo.
-
 ## Bibliografía
 - [Echeverría, G. R. - Interacción Java Prolog](http://www.cs.uns.edu.ar/~grs/Logica/InteracJavaProlog.pdf)
 - [Refactoring Guru - Patrones de diseño](https://refactoring.guru/es/design-patterns/what-is-pattern)
