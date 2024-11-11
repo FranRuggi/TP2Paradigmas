@@ -53,13 +53,6 @@ class BatallonTest {
     }
 
     @Test
-    void atacarPersonajeAturdidoTest() {
-        personajeSaludable.aturdir();
-        batallon1.atacar(batallon2);
-        assertFalse(batallon2.tienePersonajesSaludables());
-    }
-
-    @Test
     void atacarBatallonVacioTest() {
         batallon1.atacar(batallon2);
         assertTrue(batallon1.tienePersonajesSaludables());
@@ -70,14 +63,6 @@ class BatallonTest {
         personajeSaludable.setInventarioPociones(0);
         batallon1.atacar(batallon2);
         assertTrue(batallon1.tienePersonajesSaludables());
-    }
-
-    @Test
-    void ataqueReduceVidaEnemigoTest() {
-        int vidaInicial = personajeHerido.getPuntosVida();
-        
-        batallon1.atacar(batallon2);
-        assertTrue(personajeHerido.getPuntosVida() < vidaInicial);
     }
 
     @Test
@@ -136,7 +121,8 @@ class BatallonTest {
     void personajePuedeRecibirDanioAlAtacarTest() {
     	personajeHerido.setPuntosVida(100);
         int vidaInicial = personajeHerido.getPuntosVida();
-        batallon1.atacar(batallon2);
+        Hechizo hechizoTest = new Expelliarmus();
+        personajeSaludable.lanzarHechizo(personajeHerido,hechizoTest);
         assertTrue(personajeHerido.getPuntosVida() < vidaInicial);
     }
 

@@ -15,7 +15,6 @@ import personajes.mortifagos.Comandante;
 import personajes.mortifagos.Seguidor;
 
 public class PersonajeFactory {
-	protected static Random rand = new Random();
 	
 	//Cargamos los archivos Magon.in y Mortifagor.in para la asignacion de nombres de forma aleatoria
 	protected static List<String> nombresMagos;
@@ -53,7 +52,7 @@ public class PersonajeFactory {
 		}
 
 		String nombre = nombresMagos.remove(0); // Obtiene y elimina el primer nombre de la lista de magos
-		int tipo = rand.nextInt(3);
+		int tipo = (int) (Math.random() * 3);
 		switch (tipo) {
 		case 0:
 			return new Auror(nombre, 100, 100);
@@ -72,7 +71,7 @@ public class PersonajeFactory {
 		}
 
 		String nombre = nombresMortifagos.remove(0); // Obtiene y elimina el primer nombre de la lista de mortífagos
-		int tipo = rand.nextInt(2);
+		int tipo = (int) (Math.random() * 2);
 		switch (tipo) {
 		case 0:
 			return new Comandante(nombre, 150, 150);

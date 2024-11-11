@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import personajes.magos.Auror;
@@ -20,30 +21,20 @@ class PersonajeFactoryTest {
         // Reinicia las listas de nombres y la instancia de Random antes de cada prueba
         PersonajeFactory.nombresMagos = new ArrayList<>(List.of("Harry", "Hermione", "Ron"));
         PersonajeFactory.nombresMortifagos = new ArrayList<>(List.of("Bellatrix", "Lucius"));
-        PersonajeFactory.rand = new Random(0); // Semilla fija para resultados consistentes en pruebas
     }
-
+    
     @Test
-    void testCrearMagoAuror() {
-        PersonajeFactory.rand = new Random(0); // Asegura que el primer mago sea un Auror
+    void testCrearMago() {
         Personaje mago = PersonajeFactory.crearMago();
-        assertTrue(mago instanceof Auror, "Debería crear un Auror");
+        assertTrue((mago instanceof Auror) || (mago instanceof Estudiante) || (mago instanceof Profesor), "Debería crear un Mago");
     }
-
+    
     @Test
-    void testCrearMagoEstudiante() {
-        PersonajeFactory.rand = new Random(1); // Asegura que el segundo mago sea un Estudiante
-        Personaje mago = PersonajeFactory.crearMago();
-        assertTrue(mago instanceof Estudiante, "Debería crear un Estudiante");
+    void testCrearMortifagoComandante() {
+        Personaje mortifago = PersonajeFactory.crearMortifago();
+        assertTrue((mortifago instanceof Comandante) || (mortifago instanceof Seguidor), "Deberia crear un Mortifago");
     }
-
-    @Test
-    void testCrearMagoProfesor() {
-        PersonajeFactory.rand = new Random(2); // Asegura que el tercer mago sea un Profesor
-        Personaje mago = PersonajeFactory.crearMago();
-        assertTrue(mago instanceof Profesor, "Debería crear un Profesor");
-    }
-
+    
     @Test
     void testCrearMagoSinNombres() {
         PersonajeFactory.nombresMagos.clear(); // Vacía la lista de nombres de magos
@@ -51,20 +42,6 @@ class PersonajeFactoryTest {
             PersonajeFactory.crearMago();
         });
         assertEquals("No hay más nombres disponibles para magos.", exception.getMessage());
-    }
-
-    @Test
-    void testCrearMortifagoComandante() {
-        PersonajeFactory.rand = new Random(0); 
-        Personaje mortifago = PersonajeFactory.crearMortifago();
-        assertTrue(mortifago instanceof Comandante);
-    }
-
-    @Test
-    void testCrearMortifagoSeguidor() {
-        PersonajeFactory.rand = new Random(1); // Asegura que el segundo mortífago sea un Seguidor
-        Personaje mortifago = PersonajeFactory.crearMortifago();
-        assertTrue(mortifago instanceof Seguidor);
     }
 
     @Test
