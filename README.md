@@ -8,6 +8,11 @@
 **Comisión:** 02-2900  
 **Fecha:** 10/11/2024  
 
+## Link al informe completo y con imagenes 🔥
+- [Informe](https://drive.google.com/file/d/1LwIT6BpyyaQkwjIVLGzDjQSFtyBKmAQt/view?usp=drive_link)
+- Aclaracion: Dejamos el acceso con permiso a comentarios por si hace falta
+
+
 ## Índice
 1. [Desarrollo y Justificación](#desarrollo-y-justificación)
 2. [Paquetes](#paquetes)
