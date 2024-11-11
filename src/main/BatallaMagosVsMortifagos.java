@@ -15,7 +15,7 @@ public class BatallaMagosVsMortifagos {
 			batallonMagos.agregarPersonaje(PersonajeFactory.crearMago());
 			batallonMortifagos.agregarPersonaje(PersonajeFactory.crearMortifago());
 		}
-
+ 
 		
 		while (batallonMagos.tienePersonajesSaludables() && batallonMortifagos.tienePersonajesSaludables()) {
 			batallonMagos.recuperarMagia();
