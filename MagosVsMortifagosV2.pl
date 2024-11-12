@@ -3,6 +3,9 @@
 %********************************** HECHOS **********************************
 %
 %
+tipo_personaje(mago).
+tipo_personaje(mortifago).
+
 hechizo_permitido(mago, protego).
 hechizo_permitido(mago, expelliarmus).
 hechizo_permitido(mago, stupefy).
@@ -33,4 +36,4 @@ hechizos_disponibles(NivelMagia, TipoPersonaje, HechizosLanzados, Hechizos) :-
              Costo =< NivelMagia,
              hechizo_permitido(TipoPersonaje, Hechizo),
              \+ member(Hechizo, HechizosLanzados)),  % Verifica que el hechizo no esté en la lista de lanzados
-            Hechizos).
+            Hechizos),tipo_personaje(TipoPersonaje).
