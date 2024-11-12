@@ -11,10 +11,6 @@ import hechizos.AvadaKedavra;
 import hechizos.Crucio;
 import hechizos.Hechizo;
 
-import personajes.Personaje;
-import personajes.Mago;
-import personajes.Mortifago;
-
 class PersonajeTest {
     
     private Personaje mago;

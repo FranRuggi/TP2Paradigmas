@@ -8,7 +8,6 @@ import personajes.Batallon;
 import personajes.PersonajeFactory;
 
 
-
 public class BatallaMagosVsMortifagosTest {
 	 
 	Batallon batallonMagos;
