@@ -3,6 +3,8 @@ package main;
 import personajes.Batallon;
 import personajes.PersonajeFactory;
 
+
+
 public class BatallaMagosVsMortifagos {
 	public static void main(String[] args) {
 		Batallon batallonMagos = new Batallon();
@@ -13,7 +15,6 @@ public class BatallaMagosVsMortifagos {
 			batallonMagos.agregarPersonaje(PersonajeFactory.crearMago());
 			batallonMortifagos.agregarPersonaje(PersonajeFactory.crearMortifago());
 		}
- 
 		
 		while (batallonMagos.tienePersonajesSaludables() && batallonMortifagos.tienePersonajesSaludables()) {
 			batallonMagos.recuperarMagia();
@@ -48,3 +49,4 @@ public class BatallaMagosVsMortifagos {
 
 	}
 }
+

@@ -1,11 +1,12 @@
 package main;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import personajes.Batallon;
 import personajes.PersonajeFactory;
+
+
 
 public class BatallaMagosVsMortifagosTest {
 	 
@@ -46,7 +47,7 @@ public class BatallaMagosVsMortifagosTest {
         }
 
         // verificamos si los magos son los que ganan
-        assertTrue(batallonMagos.tienePersonajesSaludables(), "Los magos deberían ganar la batalla");
+        assertTrue(batallonMagos.tienePersonajesSaludables(), "Los Magos deberían ganar la batalla");
     }
     @Test
     public void testGananMortfigos() {
@@ -82,6 +83,18 @@ public class BatallaMagosVsMortifagosTest {
     	}
     	
     	// verificamos si los magos son los que ganan
-    	assertTrue(batallonMortifagos.tienePersonajesSaludables(), "Los magos deberían ganar la batalla");
+    	assertTrue(batallonMortifagos.tienePersonajesSaludables(), "Los Mortifagos deberían ganar la batalla");
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
