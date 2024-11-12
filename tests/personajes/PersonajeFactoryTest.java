@@ -30,7 +30,7 @@ class PersonajeFactoryTest {
     }
     
     @Test
-    void testCrearMortifagoComandante() {
+    void testCrearMortifago() {
         Personaje mortifago = PersonajeFactory.crearMortifago();
         assertTrue((mortifago instanceof Comandante) || (mortifago instanceof Seguidor), "Deberia crear un Mortifago");
     }
