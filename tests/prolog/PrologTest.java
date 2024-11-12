@@ -3,7 +3,6 @@ package prolog;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,7 +26,7 @@ class PrologTest {
 	void testNoQuedanHechizosParaLanzarMagoConMagia() {
 		Query queryConnection = new Query("consult", new Term[] { new Atom("MagosVsMortifagosV2.pl") });
 		
-		queryConnection.hasSolution();
+		assertTrue(queryConnection.hasSolution());
 		
 		String listaHechizosLanzados = "[protego, expelliarmus, stupefy, petrificusTotalus, expectoPatronum]";
 		String queryStr = "hechizos_disponibles(200, mago," + listaHechizosLanzados + ", Hechizos)";
@@ -50,7 +49,7 @@ class PrologTest {
 	void testMagiaInsuficienteParaCualquierHechizo() {
 		Query queryConnection = new Query("consult", new Term[] { new Atom("MagosVsMortifagosV2.pl") });
 		
-		queryConnection.hasSolution();
+		assertTrue(queryConnection.hasSolution());
 		
 		String listaHechizosLanzados = "[]";
 		String queryStr = "hechizos_disponibles(0, mago," + listaHechizosLanzados + ", Hechizos)";
@@ -73,13 +72,13 @@ class PrologTest {
 	void testMagiaSuficienteParaCualquierHechizo() {
 		Query queryConnection = new Query("consult", new Term[] { new Atom("MagosVsMortifagosV2.pl") });
 		
-		queryConnection.hasSolution();
+		assertTrue(queryConnection.hasSolution());
 		
 		String listaHechizosLanzados = "[]";
 		String queryStr = "hechizos_disponibles(200, mago," + listaHechizosLanzados + ", Hechizos)";
 		Query queryHechizosDisponibles = new Query(queryStr);
 		
-		queryHechizosDisponibles.hasSolution();
+		assertTrue(queryHechizosDisponibles.hasSolution());
 		
 		// Convertimos el término a una lista de hechizos
 		Term hechizosTerm = queryHechizosDisponibles.oneSolution().get("Hechizos");
@@ -94,4 +93,18 @@ class PrologTest {
 		assertEquals(hechizosEsperados, hechizosObtenidos);
 	}
 
+	@Test
+	void testTipoDePersonajeInexistente() {
+		Query queryConnection = new Query("consult", new Term[] { new Atom("MagosVsMortifagosV2.pl") });
+		
+		assertTrue(queryConnection.hasSolution());
+		
+		String listaHechizosLanzados = "[]";
+		String queryStr = "hechizos_disponibles(200, vampiro," + listaHechizosLanzados + ", Hechizos)";
+		Query queryHechizosDisponibles = new Query(queryStr);
+		
+	    assertFalse(queryHechizosDisponibles.hasSolution());
+	}
+	
+	
 }
