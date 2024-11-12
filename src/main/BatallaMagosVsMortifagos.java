@@ -18,11 +18,9 @@ public class BatallaMagosVsMortifagos {
 		}
 		
 		while (batallonMagos.tienePersonajesSaludables() && batallonMortifagos.tienePersonajesSaludables()) {
-			batallonMagos.recuperarMagia();
-			batallonMortifagos.recuperarMagia();
-
+			
 			// Alternar ataques entre facciones
-			if (ronda %2 == 0) {
+			if (ronda % 2 == 0) {
 				System.out.println("Turno de los Magos:");
 				batallonMagos.atacar(batallonMortifagos);
 				if (batallonMortifagos.tienePersonajesSaludables()) {
@@ -37,6 +35,8 @@ public class BatallaMagosVsMortifagos {
 					batallonMagos.atacar(batallonMortifagos);
 				}
 			}
+			batallonMagos.recuperarMagia();
+			batallonMortifagos.recuperarMagia();
 			ronda++;
 			System.out.println("----------------------------");
 		}

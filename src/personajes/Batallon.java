@@ -25,23 +25,29 @@ public class Batallon {
 	}
 
 	public void atacar(Batallon otroBatallon) {
-		hechizosLanzadosEquipoRonda.clear(); // Reiniciamos hechizos lanzados esta ronda
+		hechizosLanzadosEquipoRonda.clear(); // Reiniciamos set hechizos lanzados en esta ronda
 		for (Personaje atacante : personajes) {
-			if (!atacante.estaSaludable() || !atacante.puedeActuar()) continue;
-
+			if (!atacante.estaSaludable() || !atacante.puedeActuar()) continue; 
+			
+			// Si no esta saludable o no puede actuar, sigue al siguiente personaje
 			Personaje objetivo = otroBatallon.obtenerPersonajeSaludable();
 			if (objetivo == null) continue;
 
+			//Consultamos Hechizos posibles para ejecutar
 			List<String> hechizosDisponibles = consultarHechizosDisponibles(atacante);
+			
+			//Si tiene hechizos disponibles
 			if (!hechizosDisponibles.isEmpty()) {
-				Hechizo hechizo = seleccionarHechizoDisponible(hechizosDisponibles);
+				Hechizo hechizo = seleccionarHechizoDisponible(hechizosDisponibles); //Selecciona hechizo random
 				this.ejecutarHechizo(atacante, objetivo, hechizo);
+				//Si no tiene hechizos disponibles, busca pociones
 			} else if (atacante.getInventarioPociones() > 0) {
-				lanzarPocion(atacante);
+				lanzarPocion(atacante); //Lanza una pocion random
+				//En caso de que no tenga ni hechizos ni pociones, pierde el turno
 			} else {
 				System.out.println(atacante.getNombre() + " pierde el turno por falta de recursos");
 			}
-
+			//Eliminamos los personajes inactivos (sin vida);
 			otroBatallon.eliminarPersonajesInactivos();
 		}
 	}
@@ -59,20 +65,24 @@ public class Batallon {
 		return personajesSaludables.isEmpty() ? null : personajesSaludables.get(rand.nextInt(personajesSaludables.size()));
 	}
 
-	private List<String> consultarHechizosDisponibles(Personaje atacante) {
+	private List<String> consultarHechizosDisponibles(Personaje atacante) { // Integracion con prolog
 		try {
-			Query queryConection = new Query("consult", new Term[] { new Atom("MagosVsMortifagosV2.pl") });
-			queryConection.hasSolution();
+			//Nos conectamos con prolog
+			Query queryConnection = new Query("consult", new Term[] { new Atom("MagosVsMortifagosV2.pl") });
+			queryConnection.hasSolution(); 
 
+			//Formateo de set hechizosLanzadosEquipoRonda para la query de prolog
 			String listaHechizosLanzados = hechizosLanzadosEquipoRonda.stream()
 					.map(Hechizo::obtenerNombre)
 					.collect(Collectors.joining(", ", "[", "]"));
 
+			//Formateo de query para prolog
 			String queryStr = String.format("hechizos_disponibles(%d, %s, %s, Hechizos)",
 					atacante.getNivelMagia(),
 					atacante.getTipo().toString().toLowerCase(),
 					listaHechizosLanzados);
 
+			
 			Query queryHechizosDisponibles = new Query(queryStr);
 			if (queryHechizosDisponibles.hasSolution()) {
 				Term hechizosTerm = queryHechizosDisponibles.oneSolution().get("Hechizos");
