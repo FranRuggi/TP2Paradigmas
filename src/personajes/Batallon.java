@@ -62,7 +62,7 @@ public class Batallon {
 
 	private Personaje obtenerPersonajeSaludable() {
 		List<Personaje> personajesSaludables = personajes.stream()
-				.filter(Personaje::estaSaludable)
+				.filter(personaje -> personaje.estaSaludable() && !personaje.getTurnoPerdido())
 				.collect(Collectors.toList());
 		return personajesSaludables.isEmpty() ? null : personajesSaludables.get(rand.nextInt(personajesSaludables.size()));
 	}
