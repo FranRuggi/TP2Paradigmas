@@ -24,21 +24,21 @@ public class BatallaMagosVsMortifagos {
 				System.out.println("Turno de los Magos:");
 				batallonMagos.atacar(batallonMortifagos);
 				if (batallonMortifagos.tienePersonajesSaludables()) {
-					System.out.println("Turno de los Mortífagos:");
+					System.out.println("\nTurno de los Mortífagos:");
 					batallonMortifagos.atacar(batallonMagos);
 				}
 			} else {
 				System.out.println("Turno de los Mortífagos:");
 				batallonMortifagos.atacar(batallonMagos);
 				if (batallonMagos.tienePersonajesSaludables()) {
-					System.out.println("Turno de los Magos:");
+					System.out.println("\nTurno de los Magos:");
 					batallonMagos.atacar(batallonMortifagos);
 				}
 			}
 			batallonMagos.recuperarMagia();
 			batallonMortifagos.recuperarMagia();
 			ronda++;
-			System.out.println("----------------------------");
+			System.out.println("----------------------------\n");
 		}
 
 		if (batallonMagos.tienePersonajesSaludables()) {

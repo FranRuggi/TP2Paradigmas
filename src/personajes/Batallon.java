@@ -37,8 +37,8 @@ public class Batallon {
 
 			//Consultamos Hechizos posibles para ejecutar
 			List<String> hechizosDisponibles = consultarHechizosDisponibles(atacante);
-			
 			//Si tiene hechizos disponibles
+			
 			if (!hechizosDisponibles.isEmpty()) {
 				Hechizo hechizo = seleccionarHechizoDisponible(hechizosDisponibles); //Selecciona hechizo random
 				this.ejecutarHechizo(atacante, objetivo, hechizo);
@@ -75,9 +75,9 @@ public class Batallon {
 
 			//Formateo de set hechizosLanzadosEquipoRonda para la query de prolog
 			String listaHechizosLanzados = hechizosLanzadosEquipoRonda.stream()
-					.map(Hechizo::obtenerNombre)
-					.collect(Collectors.joining(", ", "[", "]"));
-
+				    .map(hechizo -> hechizo.obtenerNombre().toLowerCase())
+				    .collect(Collectors.joining(", ", "[", "]"));
+			
 			//Formateo de query para prolog
 			String queryStr = String.format("hechizos_disponibles(%d, %s, %s, Hechizos)",
 					atacante.getNivelMagia(),
