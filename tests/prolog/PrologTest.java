@@ -46,6 +46,29 @@ class PrologTest {
 	}
 	
 	@Test
+	void testNoQuedanHechizosParaLanzarMortifagoConMagia() {
+		Query queryConnection = new Query("consult", new Term[] { new Atom("MagosVsMortifagosV2.pl") });
+		
+		assertTrue(queryConnection.hasSolution());
+		
+		String listaHechizosLanzados = "[avadakedavra, crucio, sectumsempra, protego, imperius]";
+		String queryStr = "hechizos_disponibles(200, mortifago," + listaHechizosLanzados + ", Hechizos)";
+		Query queryHechizosDisponibles = new Query(queryStr);
+		
+		// Si la consulta tiene solución, obtenemos el término para la variable "Hechizos"
+	    assertTrue(queryHechizosDisponibles.hasSolution());
+        Term hechizosTerm = queryHechizosDisponibles.oneSolution().get("Hechizos");
+
+        // Convertimos el término a una lista y verificamos que esté vacía
+        List<String> hechizosObtenidos = Arrays.stream(Term.listToTermArray(hechizosTerm))
+                                               .map(Term::name)
+                                               .collect(Collectors.toList());
+
+        // Verificamos que la lista de hechizos esté vacía
+        assertTrue(hechizosObtenidos.isEmpty(), "La lista de hechizos debería estar vacía");
+	}
+	
+	@Test
 	void testMagiaInsuficienteParaCualquierHechizo() {
 		Query queryConnection = new Query("consult", new Term[] { new Atom("MagosVsMortifagosV2.pl") });
 		
