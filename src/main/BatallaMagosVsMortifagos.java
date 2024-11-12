@@ -9,11 +9,12 @@ public class BatallaMagosVsMortifagos {
 	public static void main(String[] args) {
 		Batallon batallonMagos = new Batallon();
 		Batallon batallonMortifagos = new Batallon();
+		PersonajeFactory fabricaDePersonajes = new PersonajeFactory();
 		int ronda = 0;
 		// Crear personajes y añadir hechizos
 		for (int i = 0; i < 3; i++) {
-			batallonMagos.agregarPersonaje(PersonajeFactory.crearMago());
-			batallonMortifagos.agregarPersonaje(PersonajeFactory.crearMortifago());
+			batallonMagos.agregarPersonaje(fabricaDePersonajes.crearMago());
+			batallonMortifagos.agregarPersonaje(fabricaDePersonajes.crearMortifago());
 		}
 		
 		while (batallonMagos.tienePersonajesSaludables() && batallonMortifagos.tienePersonajesSaludables()) {

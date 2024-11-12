@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 import personajes.magos.Auror;
 import personajes.magos.Estudiante;
 import personajes.magos.Profesor;
@@ -17,10 +16,10 @@ import personajes.mortifagos.Seguidor;
 public class PersonajeFactory {
 	
 	//Cargamos los archivos Magon.in y Mortifagor.in para la asignacion de nombres de forma aleatoria
-	protected static List<String> nombresMagos;
-	protected static List<String> nombresMortifagos;
-
-	static {
+	private List<String> nombresMagos;
+	private List<String> nombresMortifagos;
+	
+	public PersonajeFactory() {
 		try {
 			nombresMagos = cargarNombres("Magos.in");
 			nombresMortifagos = cargarNombres("Mortifagos.in");
@@ -33,7 +32,7 @@ public class PersonajeFactory {
 		}
 	}
 
-	private static List<String> cargarNombres(String nombreArchivo) throws IOException {
+	private List<String> cargarNombres(String nombreArchivo) throws IOException {
 		List<String> nombres = new ArrayList<>();
 		try (InputStream inputStream = PersonajeFactory.class.getResourceAsStream(nombreArchivo);
 				BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
@@ -45,8 +44,16 @@ public class PersonajeFactory {
 		}
 		return nombres;
 	}
+	
+	public void vaciarListaNombresMagos() {
+		nombresMagos.clear();
+	}
+	
+	public void vaciarListaNombresMortifagos() {
+		nombresMortifagos.clear();
+	}
 
-	public static Personaje crearMago() {
+	public Personaje crearMago() {
 		if (nombresMagos.isEmpty()) {
 			throw new IllegalStateException("No hay más nombres disponibles para magos.");
 		}
@@ -65,7 +72,7 @@ public class PersonajeFactory {
 		}
 	}
 
-	public static Personaje crearMortifago() {
+	public Personaje crearMortifago() {
 		if (nombresMortifagos.isEmpty()) {
 			throw new IllegalStateException("No hay más nombres disponibles para mortífagos.");
 		}

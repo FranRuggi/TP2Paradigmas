@@ -1,11 +1,7 @@
 package personajes;
 
 import static org.junit.jupiter.api.Assertions.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import personajes.magos.Auror;
@@ -15,40 +11,39 @@ import personajes.mortifagos.Comandante;
 import personajes.mortifagos.Seguidor;
 
 class PersonajeFactoryTest {
-
+	PersonajeFactory fabricaDePersonajes;
     @BeforeEach
     void setUp() {
-        // Reinicia las listas de nombres y la instancia de Random antes de cada prueba
-        PersonajeFactory.nombresMagos = new ArrayList<>(List.of("Harry", "Hermione", "Ron"));
-        PersonajeFactory.nombresMortifagos = new ArrayList<>(List.of("Bellatrix", "Lucius"));
+    	// Reinicia las listas de nombres
+    	fabricaDePersonajes = new PersonajeFactory();
     }
     
     @Test
     void testCrearMago() {
-        Personaje mago = PersonajeFactory.crearMago();
+        Personaje mago = fabricaDePersonajes.crearMago();
         assertTrue((mago instanceof Auror) || (mago instanceof Estudiante) || (mago instanceof Profesor), "Debería crear un Mago");
     }
     
     @Test
     void testCrearMortifago() {
-        Personaje mortifago = PersonajeFactory.crearMortifago();
+        Personaje mortifago = fabricaDePersonajes.crearMortifago();
         assertTrue((mortifago instanceof Comandante) || (mortifago instanceof Seguidor), "Deberia crear un Mortifago");
     }
     
     @Test
     void testCrearMagoSinNombres() {
-        PersonajeFactory.nombresMagos.clear(); // Vacía la lista de nombres de magos
+    	fabricaDePersonajes.vaciarListaNombresMagos(); // Vacía la lista de nombres de magos
         Exception exception = assertThrows(IllegalStateException.class, () -> {
-            PersonajeFactory.crearMago();
+        	fabricaDePersonajes.crearMago();
         });
         assertEquals("No hay más nombres disponibles para magos.", exception.getMessage());
     }
 
     @Test
     void testCrearMortifagoSinNombres() {
-        PersonajeFactory.nombresMortifagos.clear(); // Vacía la lista de nombres de mortífagos
+    	fabricaDePersonajes.vaciarListaNombresMortifagos(); // Vacía la lista de nombres de mortífagos
         Exception exception = assertThrows(IllegalStateException.class, () -> {
-            PersonajeFactory.crearMortifago();
+        	fabricaDePersonajes.crearMortifago();
         });
         assertEquals("No hay más nombres disponibles para mortífagos.", exception.getMessage());
     }

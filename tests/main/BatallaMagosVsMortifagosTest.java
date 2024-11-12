@@ -1,5 +1,6 @@
 package main;
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,19 +13,25 @@ public class BatallaMagosVsMortifagosTest {
 	 
 	Batallon batallonMagos;
     Batallon batallonMortifagos;
+    PersonajeFactory fabricaDePersonajes;
+    
+    @BeforeEach
+    void setUp() {
+    	batallonMagos = new Batallon();
+        batallonMortifagos = new Batallon();
+        fabricaDePersonajes = new PersonajeFactory();
+    }
+    
     
     @Test
     public void testGananMagos() {
         // Simulamos la batalla hasta que uno de los 2 batallones se queda sin personajes saludables
-    	batallonMagos = new Batallon();
-        batallonMortifagos = new Batallon();
-        
         //Como el juego es aleatorio, para asegurarnos que los magos ganen, generaremos mas magos que mortifagos.
         for (int i = 0; i < 3; i++) 
-            batallonMagos.agregarPersonaje(PersonajeFactory.crearMago());
+            batallonMagos.agregarPersonaje(fabricaDePersonajes.crearMago());
 
         //Creamos 3 magos y 1 solo mortifago
-        batallonMortifagos.agregarPersonaje(PersonajeFactory.crearMortifago());
+        batallonMortifagos.agregarPersonaje(fabricaDePersonajes.crearMortifago());
         
         
         int ronda = 0;
@@ -50,17 +57,14 @@ public class BatallaMagosVsMortifagosTest {
         assertTrue(batallonMagos.tienePersonajesSaludables(), "Los Magos deberían ganar la batalla");
     }
     @Test
-    public void testGananMortfigos() {
+    public void testGananMortifagos() {
     	// Simulamos la batalla hasta que uno de los 2 batallones se queda sin personajes saludables
-    	batallonMagos = new Batallon();
-    	batallonMortifagos = new Batallon();
-    	
     	//Como el juego es aleatorio, para asegurarnos que los mortifagos ganen, generaremos mas mortifagos que magos.
     	for (int i = 0; i < 3; i++) 
-    		batallonMortifagos.agregarPersonaje(PersonajeFactory.crearMago());
+    		batallonMortifagos.agregarPersonaje(fabricaDePersonajes.crearMago());
     	
     	//Creamos 3 mortifago y 1 solo Mago
-    	batallonMagos.agregarPersonaje(PersonajeFactory.crearMortifago());
+    	batallonMagos.agregarPersonaje(fabricaDePersonajes.crearMortifago());
     	
     	
     	int ronda = 0;
