@@ -4,6 +4,7 @@
 - Federico Ariel Martucci
 - Franco Ruggieri
 - Zois Andres Uziel Ruggiero Bellone
+
 **Grupo:** Beta  
 **Comisión:** 02-2900  
 **Fecha:** 10/11/2024  
