@@ -49,6 +49,14 @@ class PocionTest {
 		curacion.aplicarEfecto(mago);
 		assertEquals(56, mago.getPuntosVida(), "La vida del mago debería ser 56 después de aplicar Curacion.");
 	}
+	
+	@Test
+	void testMagoLanzaPocionCuracionIncrementaVida() {
+		mago = new Mago("Harry Potter", 10, 1);
+		Pocion curacion = new Curacion();
+		mago.lanzarPocion(mago, curacion);
+		assertEquals(56, mago.getPuntosVida(), "La vida del mago debería ser 56 después de aplicar Curacion.");
+	}
 
 	// Tests para la clase NivelMagia
 
