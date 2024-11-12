@@ -28,7 +28,7 @@ class PrologTest {
 		
 		assertTrue(queryConnection.hasSolution());
 		
-		String listaHechizosLanzados = "[protego, expelliarmus, stupefy, petrificusTotalus, expectoPatronum]";
+		String listaHechizosLanzados = "[protego, expelliarmus, stupefy, petrificustotalus, expectopatronum]";
 		String queryStr = "hechizos_disponibles(200, mago," + listaHechizosLanzados + ", Hechizos)";
 		Query queryHechizosDisponibles = new Query(queryStr);
 		
@@ -110,7 +110,7 @@ class PrologTest {
                  .collect(Collectors.toList());
 
 		// Creamos la lista esperada
-		List<String> hechizosEsperados = Arrays.asList("stupefy", "protego", "petrificusTotalus", "expelliarmus", "expectoPatronum");
+		List<String> hechizosEsperados = Arrays.asList("stupefy", "protego", "petrificustotalus", "expelliarmus", "expectopatronum");
 		
 		// Comparamos las listas
 		assertEquals(hechizosEsperados, hechizosObtenidos);

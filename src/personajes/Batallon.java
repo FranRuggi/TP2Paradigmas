@@ -37,6 +37,7 @@ public class Batallon {
 
 			//Consultamos Hechizos posibles para ejecutar
 			List<String> hechizosDisponibles = consultarHechizosDisponibles(atacante);
+			
 			//Si tiene hechizos disponibles
 			
 			if (!hechizosDisponibles.isEmpty()) {
@@ -66,7 +67,7 @@ public class Batallon {
 				.collect(Collectors.toList());
 		return personajesSaludables.isEmpty() ? null : personajesSaludables.get(rand.nextInt(personajesSaludables.size()));
 	}
-
+ 
 	private List<String> consultarHechizosDisponibles(Personaje atacante) { // Integracion con prolog
 		try {
 			//Nos conectamos con prolog
