@@ -25,7 +25,9 @@ public class Batallon {
 	}
 
 	public void atacar(Batallon otroBatallon) {
-		hechizosLanzadosEquipoRonda.clear(); // Reiniciamos set hechizos lanzados en esta ronda
+		
+		// Reiniciamos set hechizos lanzados en esta ronda para tener posibilidad de todos los hechizos
+		hechizosLanzadosEquipoRonda.clear(); 
 		for (Personaje atacante : personajes) {
 			if (!atacante.estaSaludable() || !atacante.puedeActuar()) continue; 
 			
@@ -82,7 +84,7 @@ public class Batallon {
 					atacante.getTipo().toString().toLowerCase(),
 					listaHechizosLanzados);
 
-			
+			//Retornamos lista de hechizos disponibles
 			Query queryHechizosDisponibles = new Query(queryStr);
 			if (queryHechizosDisponibles.hasSolution()) {
 				Term hechizosTerm = queryHechizosDisponibles.oneSolution().get("Hechizos");
