@@ -3,8 +3,6 @@ package main;
 import personajes.Batallon;
 import personajes.PersonajeFactory;
 
-
-
 public class BatallaMagosVsMortifagos {
 	public static void main(String[] args) {
 		Batallon batallonMagos = new Batallon();
@@ -16,9 +14,9 @@ public class BatallaMagosVsMortifagos {
 			batallonMagos.agregarPersonaje(fabricaDePersonajes.crearMago());
 			batallonMortifagos.agregarPersonaje(fabricaDePersonajes.crearMortifago());
 		}
-		
+
 		while (batallonMagos.tienePersonajesSaludables() && batallonMortifagos.tienePersonajesSaludables()) {
-			
+
 			// Alternar ataques entre facciones
 			if (ronda % 2 == 0) {
 				System.out.println("Turno de los Magos:");
@@ -50,4 +48,3 @@ public class BatallaMagosVsMortifagos {
 
 	}
 }
-

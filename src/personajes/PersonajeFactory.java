@@ -14,11 +14,12 @@ import personajes.mortifagos.Comandante;
 import personajes.mortifagos.Seguidor;
 
 public class PersonajeFactory {
-	
-	//Cargamos los archivos Magon.in y Mortifagor.in para la asignacion de nombres de forma aleatoria
+
+	// Cargamos los archivos Magon.in y Mortifagor.in para la asignacion de nombres
+	// de forma aleatoria
 	private List<String> nombresMagos;
 	private List<String> nombresMortifagos;
-	
+
 	public PersonajeFactory() {
 		try {
 			nombresMagos = cargarNombres("Magos.in");
@@ -44,11 +45,11 @@ public class PersonajeFactory {
 		}
 		return nombres;
 	}
-	
+
 	public void vaciarListaNombresMagos() {
 		nombresMagos.clear();
 	}
-	
+
 	public void vaciarListaNombresMortifagos() {
 		nombresMortifagos.clear();
 	}
