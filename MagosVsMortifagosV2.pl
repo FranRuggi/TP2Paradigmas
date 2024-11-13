@@ -30,6 +30,7 @@ hechizo(expectopatronum, 30).
 
 % Nos devuelve una lista con todos los hechizos que el personaje actual puede ejecutar
 % dependiendo del tipo de personaje, del nivel de magia que tenga y de los hechizos lanzados en la ronda
+
 hechizos_disponibles(NivelMagia, TipoPersonaje, HechizosLanzados, Hechizos) :-
     findall(Hechizo,
             (hechizo(Hechizo, Costo),

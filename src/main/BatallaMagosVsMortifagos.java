@@ -16,7 +16,7 @@ public class BatallaMagosVsMortifagos {
 		}
 
 		while (batallonMagos.tienePersonajesSaludables() && batallonMortifagos.tienePersonajesSaludables()) {
-
+ 
 			// Alternar ataques entre facciones
 			if (ronda % 2 == 0) {
 				System.out.println("Turno de los Magos:");
